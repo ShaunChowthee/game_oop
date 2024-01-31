@@ -18,6 +18,7 @@ class Player
     def gets_damaged(damage)
         @hp = @hp - damage
         if self.hp <= 0
+            puts "#{@name} took #{damage} damage"
             puts "#{@name} has been slain"
         else
             puts "#{@name} took #{damage} damage"
@@ -30,8 +31,10 @@ class Player
 
     def attacks(target)
         atk_value = compute_dmg
-        puts "#{self.name} attacks #{target.name}"
-        target.gets_damaged(atk_value)
+        if target.hp >0
+            puts "#{self.name} attacks #{target.name}"
+            target.gets_damaged(atk_value)
+        end
     end
 end
 
